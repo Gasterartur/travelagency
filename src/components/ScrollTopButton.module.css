@@ -17,7 +17,10 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
-  transition: opacity 0.2s, transform 0.2s, background-color 0.15s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    background-color 0.15s;
 }
 
 .visible {
@@ -32,5 +35,14 @@
 
 .button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px var(--color-primary-ring), var(--shadow-md);
+  box-shadow:
+    0 0 0 3px var(--color-primary-ring),
+    var(--shadow-md);
+}
+
+/* Offer page shows a fixed booking bar on phones – sit above it */
+@media (max-width: 959px) {
+  :global(body.has-bottom-bar) .button {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
 }

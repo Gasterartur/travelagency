@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../i18n/useLanguage.js'
 import Button from './Button.jsx'
-import { CalendarIcon, PinIcon, SearchIcon, StarIcon, UsersIcon } from './Icons.jsx'
+import { CalendarIcon, PinIcon, SearchIcon, UsersIcon } from './Icons.jsx'
 import styles from './Hero.module.css'
 
 const TODAY = new Date().toISOString().slice(0, 10)
@@ -23,9 +23,6 @@ export default function Hero({ onSearch }) {
       <div className={styles.overlay} />
 
       <div className={`container ${styles.content}`}>
-        <span className={styles.badge}>
-          <StarIcon size={14} /> {t.hero.badge}
-        </span>
         <h1 className={styles.title}>{t.hero.title}</h1>
         <p className={styles.subtitle}>{t.hero.subtitle}</p>
 
@@ -71,21 +68,6 @@ export default function Hero({ onSearch }) {
             <SearchIcon size={18} /> {t.hero.search}
           </Button>
         </form>
-
-        <dl className={styles.stats}>
-          <div>
-            <dt>{t.hero.stats[0]}</dt>
-            <dd>120+</dd>
-          </div>
-          <div>
-            <dt>{t.hero.stats[1]}</dt>
-            <dd>15</dd>
-          </div>
-          <div>
-            <dt>{t.hero.stats[2]}</dt>
-            <dd>4,9 ★</dd>
-          </div>
-        </dl>
       </div>
     </section>
   )

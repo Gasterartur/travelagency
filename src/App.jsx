@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import Destinations from './components/Destinations.jsx'
-import HowItWorks from './components/HowItWorks.jsx'
-import WhyUs from './components/WhyUs.jsx'
-import Offers from './components/Offers.jsx'
-import Newsletter from './components/Newsletter.jsx'
 import Footer from './components/Footer.jsx'
 import RequestModal from './components/RequestModal.jsx'
+import ScrollManager from './components/ScrollManager.jsx'
 import ScrollTopButton from './components/ScrollTopButton.jsx'
+import HomePage from './pages/HomePage.jsx'
+import OfferPage from './pages/OfferPage.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 const FAVORITES_KEY = 'fw24.favorites'
 
@@ -20,8 +19,6 @@ function loadFavorites() {
     return []
   }
 }
-
-const scrollToOffers = () => document.getElementById('offers')?.scrollIntoView()
 
 export default function App() {
   const [query, setQuery] = useState('')
@@ -37,36 +34,24 @@ export default function App() {
     }
   }, [favorites])
 
-  const handleSearch = ({ query, date, guests }) => {
-    setQuery(query)
-    setTripDefaults({ date, guests })
-    scrollToOffers()
-  }
-
-  const handleDestination = (q) => {
-    setQuery(q)
-    scrollToOffers()
-  }
-
   const toggleFavorite = (id) =>
     setFavorites((favs) => (favs.includes(id) ? favs.filter((f) => f !== id) : [...favs, id]))
 
+  const shared = { favorites, onToggleFavorite: toggleFavorite, onRequest: setRequested }
+
   return (
     <>
+      <ScrollManager />
       <Header />
       <main>
-        <Hero onSearch={handleSearch} />
-        <Destinations onSelect={handleDestination} />
-        <HowItWorks />
-        <WhyUs />
-        <Offers
-          query={query}
-          onClearQuery={() => setQuery('')}
-          favorites={favorites}
-          onToggleFavorite={toggleFavorite}
-          onRequest={setRequested}
-        />
-        <Newsletter />
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage query={query} setQuery={setQuery} setTripDefaults={setTripDefaults} {...shared} />}
+          />
+          <Route path="/angebot/:id" element={<OfferPage {...shared} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
       <ScrollTopButton />

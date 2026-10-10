@@ -13,8 +13,6 @@ export const offers = [
     board: 'bb',
     price: 899,
     oldPrice: 1099,
-    rating: 4.9,
-    reviews: 312,
     popularity: 98,
   },
   {
@@ -27,8 +25,6 @@ export const offers = [
     board: 'ai',
     price: 2490,
     oldPrice: 2890,
-    rating: 4.9,
-    reviews: 188,
     popularity: 95,
   },
   {
@@ -40,8 +36,6 @@ export const offers = [
     nights: 12,
     board: 'bb',
     price: 1390,
-    rating: 4.8,
-    reviews: 241,
     popularity: 93,
   },
   {
@@ -53,8 +47,6 @@ export const offers = [
     nights: 3,
     board: 'bb',
     price: 399,
-    rating: 4.7,
-    reviews: 529,
     popularity: 92,
   },
   {
@@ -67,8 +59,6 @@ export const offers = [
     board: 'hb',
     price: 1290,
     oldPrice: 1490,
-    rating: 4.8,
-    reviews: 276,
     popularity: 90,
   },
   {
@@ -80,8 +70,6 @@ export const offers = [
     nights: 4,
     board: 'bb',
     price: 449,
-    rating: 4.7,
-    reviews: 402,
     popularity: 88,
   },
   {
@@ -93,8 +81,6 @@ export const offers = [
     nights: 5,
     board: 'hb',
     price: 790,
-    rating: 4.9,
-    reviews: 154,
     popularity: 87,
   },
   {
@@ -106,8 +92,6 @@ export const offers = [
     nights: 8,
     board: 'ro',
     price: 1590,
-    rating: 4.8,
-    reviews: 198,
     popularity: 86,
   },
   {
@@ -120,8 +104,6 @@ export const offers = [
     board: 'hb',
     price: 690,
     oldPrice: 820,
-    rating: 4.8,
-    reviews: 133,
     popularity: 84,
   },
   {
@@ -133,8 +115,6 @@ export const offers = [
     nights: 6,
     board: 'bb',
     price: 949,
-    rating: 4.6,
-    reviews: 367,
     popularity: 83,
   },
   {
@@ -146,8 +126,6 @@ export const offers = [
     nights: 4,
     board: 'bb',
     price: 429,
-    rating: 4.7,
-    reviews: 455,
     popularity: 82,
   },
   {
@@ -159,9 +137,18 @@ export const offers = [
     nights: 3,
     board: 'bb',
     price: 379,
-    rating: 4.6,
-    reviews: 288,
     popularity: 80,
+  },
+  {
+    id: 'prague',
+    category: 'city',
+    image: '/images/prague.jpg',
+    title: { de: 'Prag – Goldene Stadt an der Moldau', ru: 'Прага – золотой город на Влтаве' },
+    location: { de: 'Tschechien', ru: 'Чехия' },
+    nights: 3,
+    board: 'bb',
+    price: 349,
+    popularity: 81,
   },
   {
     id: 'norway',
@@ -172,8 +159,6 @@ export const offers = [
     nights: 7,
     board: 'hb',
     price: 1190,
-    rating: 4.9,
-    reviews: 121,
     popularity: 79,
   },
   {
@@ -185,8 +170,6 @@ export const offers = [
     nights: 8,
     board: 'bb',
     price: 1340,
-    rating: 4.8,
-    reviews: 97,
     popularity: 77,
   },
   {
@@ -198,8 +181,6 @@ export const offers = [
     nights: 6,
     board: 'ro',
     price: 1090,
-    rating: 4.7,
-    reviews: 341,
     popularity: 76,
   },
   {
@@ -211,8 +192,6 @@ export const offers = [
     nights: 14,
     board: 'ro',
     price: 1890,
-    rating: 4.8,
-    reviews: 64,
     popularity: 74,
   },
 ]
@@ -224,41 +203,35 @@ export const destinations = [
     image: '/images/santorini.jpg',
     name: { de: 'Griechenland', ru: 'Греция' },
     query: { de: 'Griechenland', ru: 'Греция' },
-    price: 899,
   },
   {
     id: 'bali',
     image: '/images/bali.jpg',
     name: { de: 'Indonesien', ru: 'Индонезия' },
     query: { de: 'Indonesien', ru: 'Индонезия' },
-    price: 1390,
   },
   {
     id: 'italy',
     image: '/images/venice.jpg',
     name: { de: 'Italien', ru: 'Италия' },
     query: { de: 'Italien', ru: 'Италия' },
-    price: 379,
   },
   {
     id: 'maldives',
     image: '/images/maldives.jpg',
     name: { de: 'Malediven', ru: 'Мальдивы' },
     query: { de: 'Malediven', ru: 'Мальдивы' },
-    price: 2490,
   },
   {
-    id: 'usa',
-    image: '/images/newyork.jpg',
-    name: { de: 'USA', ru: 'США' },
-    query: { de: 'USA', ru: 'США' },
-    price: 1090,
+    id: 'czechia',
+    image: '/images/prague.jpg',
+    name: { de: 'Tschechien', ru: 'Чехия' },
+    query: { de: 'Tschechien', ru: 'Чехия' },
   },
   {
     id: 'norway',
     image: '/images/norway.jpg',
     name: { de: 'Norwegen', ru: 'Норвегия' },
     query: { de: 'Norwegen', ru: 'Норвегия' },
-    price: 1190,
   },
 ]

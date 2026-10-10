@@ -45,7 +45,9 @@
 
 .card:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px var(--color-primary-ring), var(--shadow-md);
+  box-shadow:
+    0 0 0 3px var(--color-primary-ring),
+    var(--shadow-md);
 }
 
 .image {
@@ -82,11 +84,6 @@
   font-size: 1.375rem;
   font-weight: 800;
   letter-spacing: -0.01em;
-}
-
-.price {
-  color: #e2e8f0;
-  font-size: 0.9375rem;
 }
 
 .more {

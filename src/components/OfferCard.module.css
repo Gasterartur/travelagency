@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -7,7 +8,9 @@
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
 }
 
 @media (hover: hover) {
@@ -60,6 +63,7 @@
 
 .fav {
   position: absolute;
+  z-index: 2;
   top: 8px;
   right: 8px;
   display: grid;
@@ -72,7 +76,9 @@
   background: #ffffffe6;
   color: #334155;
   cursor: pointer;
-  transition: color 0.15s, transform 0.15s;
+  transition:
+    color 0.15s,
+    transform 0.15s;
 }
 
 .fav:hover {
@@ -117,23 +123,6 @@
 
 .location svg {
   flex-shrink: 0;
-}
-
-.rating {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-  font-weight: 700;
-}
-
-.rating svg {
-  color: var(--color-star);
-}
-
-.reviews {
-  color: var(--color-muted);
-  font-weight: 400;
 }
 
 .title {
@@ -198,4 +187,35 @@
 .perPerson {
   color: var(--color-muted);
   font-size: 0.75rem;
+}
+
+/* Whole card is clickable via the title link; buttons stay on top of it */
+.titleLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.titleLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.titleLink:focus-visible {
+  outline: none;
+}
+
+.titleLink:focus-visible::after {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+.card:hover .titleLink {
+  color: var(--color-primary);
+}
+
+.action {
+  position: relative;
+  z-index: 2;
 }

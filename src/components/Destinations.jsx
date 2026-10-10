@@ -2,7 +2,6 @@ import { useLanguage } from '../i18n/useLanguage.js'
 import { destinations } from '../data/offers.js'
 import SectionHeader from './SectionHeader.jsx'
 import { ArrowRightIcon } from './Icons.jsx'
-import { formatPrice } from '../utils/format.js'
 import styles from './Destinations.module.css'
 
 export default function Destinations({ onSelect }) {
@@ -21,9 +20,6 @@ export default function Destinations({ onSelect }) {
                 <span className={styles.shade} />
                 <span className={styles.body}>
                   <span className={styles.name}>{d.name[lang]}</span>
-                  <span className={styles.price}>
-                    {t.destinations.from} {formatPrice(d.price, lang)}
-                  </span>
                   <span className={styles.more}>
                     {t.destinations.show} <ArrowRightIcon size={16} />
                   </span>

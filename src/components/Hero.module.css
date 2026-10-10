@@ -34,25 +34,6 @@
   gap: 16px;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  align-self: flex-start;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: #ffffff26;
-  border: 1px solid #ffffff40;
-  backdrop-filter: blur(6px);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.badge svg {
-  color: var(--color-star);
-}
-
 .title {
   max-width: 14ch;
   font-size: clamp(2.25rem, 8vw, 4.25rem);
@@ -114,15 +95,20 @@
   border-radius: var(--radius-sm);
   background: var(--color-surface);
   font-size: 16px; /* prevents iOS zoom on focus */
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
   -webkit-appearance: none;
   appearance: none;
 }
 
 select.input {
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
     linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 13px) 50%;
   background-size: 5px 5px;
   background-repeat: no-repeat;
   padding-right: 32px;
@@ -136,29 +122,6 @@ select.input {
 
 .submit {
   grid-column: 1 / -1;
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 32px;
-  margin: 12px 0 0;
-}
-
-.stats div {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.stats dd {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-
-.stats dt {
-  font-size: 0.8125rem;
-  color: #cbd5e1;
 }
 
 @media (min-width: 768px) {
@@ -179,9 +142,5 @@ select.input {
   .guests,
   .submit {
     grid-column: auto;
-  }
-
-  .stats dd {
-    font-size: 1.75rem;
   }
 }

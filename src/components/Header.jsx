@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/useLanguage.js'
 import { useTheme } from '../hooks/useTheme.js'
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll.js'
@@ -72,18 +73,18 @@ export default function Header() {
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={`container ${styles.inner}`}>
-          <a href="#top" className={styles.logo} onClick={close}>
+          <Link to="/" className={styles.logo} onClick={close}>
             <span className={styles.logoMark}>
               <PlaneIcon size={18} />
             </span>
             Fernweh<span className={styles.logoAccent}>24</span>
-          </a>
+          </Link>
 
           <nav className={styles.nav} aria-label="Hauptnavigation">
             {LINKS.map((key) => (
-              <a key={key} href={`#${key}`} className={styles.link}>
+              <Link key={key} to={`/#${key}`} className={styles.link}>
                 {t.nav[key]}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -92,7 +93,7 @@ export default function Header() {
               <LangSwitcher />
             </div>
             <ThemeToggle />
-            <Button as="a" href="#contact" size="sm" className={styles.cta}>
+            <Button as={Link} to="/#contact" size="sm" className={styles.cta}>
               {t.nav.cta}
             </Button>
             <button
@@ -112,14 +113,14 @@ export default function Header() {
       <div id="mobile-menu" className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} inert={!open}>
         <nav className={styles.drawerNav} aria-label="Mobile Navigation">
           {LINKS.map((key) => (
-            <a key={key} href={`#${key}`} className={styles.drawerLink} onClick={close}>
+            <Link key={key} to={`/#${key}`} className={styles.drawerLink} onClick={close}>
               {t.nav[key]}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className={styles.drawerFooter}>
           <LangSwitcher />
-          <Button as="a" href="#contact" block onClick={close}>
+          <Button as={Link} to="/#contact" block onClick={close}>
             {t.nav.cta}
           </Button>
         </div>

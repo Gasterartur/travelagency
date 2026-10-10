@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/useLanguage.js'
-import { formatNumber, formatPrice } from '../utils/format.js'
+import { formatPrice } from '../utils/format.js'
 import Button from './Button.jsx'
-import { ForkIcon, HeartIcon, MoonIcon, PinIcon, StarIcon } from './Icons.jsx'
+import { ForkIcon, HeartIcon, MoonIcon, PinIcon } from './Icons.jsx'
 import styles from './OfferCard.module.css'
 
 export default function OfferCard({ offer, isFavorite, onToggleFavorite, onRequest }) {
@@ -30,13 +31,13 @@ export default function OfferCard({ offer, isFavorite, onToggleFavorite, onReque
           <span className={styles.location}>
             <PinIcon size={14} /> {offer.location[lang]}
           </span>
-          <span className={styles.rating}>
-            <StarIcon size={14} /> {formatNumber(offer.rating, lang, 1)}
-            <span className={styles.reviews}>({offer.reviews})</span>
-          </span>
         </div>
 
-        <h3 className={styles.title}>{offer.title[lang]}</h3>
+        <h3 className={styles.title}>
+          <Link to={`/angebot/${offer.id}`} className={styles.titleLink}>
+            {offer.title[lang]}
+          </Link>
+        </h3>
 
         <ul className={styles.features}>
           <li>
@@ -55,7 +56,7 @@ export default function OfferCard({ offer, isFavorite, onToggleFavorite, onReque
             </span>
             <span className={styles.perPerson}>{t.offers.perPerson}</span>
           </div>
-          <Button size="sm" onClick={() => onRequest(offer)}>
+          <Button size="sm" className={styles.action} onClick={() => onRequest(offer)}>
             {t.offers.request}
           </Button>
         </div>

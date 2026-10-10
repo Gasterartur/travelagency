@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/useLanguage.js'
 import { PlaneIcon } from './Icons.jsx'
 import styles from './Footer.module.css'
@@ -18,12 +19,12 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <a href="#top" className={styles.logo}>
+          <Link to="/" className={styles.logo}>
             <span className={styles.logoMark}>
               <PlaneIcon size={16} />
             </span>
             Fernweh24
-          </a>
+          </Link>
           <p className={styles.tagline}>{f.tagline}</p>
           <address className={styles.address}>
             Musterstraße 24, 10115 Berlin
@@ -40,7 +41,7 @@ export default function Footer() {
             <ul>
               {col.links.map((label) => (
                 <li key={label}>
-                  <a href="#top">{label}</a>
+                  <Link to="/">{label}</Link>
                 </li>
               ))}
             </ul>

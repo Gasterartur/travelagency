@@ -12,7 +12,6 @@ export const translations = {
     },
     theme: { light: 'Helles Design', dark: 'Dunkles Design' },
     hero: {
-      badge: 'Über 2.500 zufriedene Reisende',
       title: 'Kleines Budget. Große Abenteuer.',
       subtitle:
         'Strand, Städte, Berge oder Fernreise: Wir finden Ihre Traumreise – persönlich beraten, fair gebucht und rundum betreut.',
@@ -21,13 +20,11 @@ export const translations = {
       when: 'Wann?',
       guests: 'Reisende',
       search: 'Angebote finden',
-      stats: ['Reiseziele', 'Jahre Erfahrung', 'Bewertung'],
     },
     destinations: {
       eyebrow: 'Beliebte Reiseziele',
       title: 'Wohin soll die Reise gehen?',
       text: 'Lassen Sie sich inspirieren – von Mittelmeer-Klassikern bis zu Fernzielen.',
-      from: 'ab',
       show: 'Angebote ansehen',
     },
     how: {
@@ -72,6 +69,24 @@ export const translations = {
       showMore: 'Mehr anzeigen',
       clearSearch: 'Suche entfernen',
       board: { ai: 'All Inclusive', hb: 'Halbpension', bb: 'Frühstück', ro: 'Nur Übernachtung' },
+    },
+    detail: {
+      back: 'Alle Angebote',
+      about: 'Über die Reise',
+      highlights: 'Highlights',
+      included: 'Im Preis enthalten',
+      flight: 'Hin- und Rückflug ab Deutschland',
+      transfer: 'Transfer Flughafen – Hotel – Flughafen',
+      stay: (n) => `${n} Nächte im ausgewählten Hotel`,
+      security: 'Reisesicherungsschein',
+      duration: 'Dauer',
+      board: 'Verpflegung',
+      type: 'Reiseart',
+      priceNote: 'Preis pro Person im Doppelzimmer inkl. Flug',
+      noObligation: 'Unverbindlich anfragen – Antwort innerhalb von 24 Stunden',
+      similar: 'Ähnliche Angebote',
+      notFound: 'Dieses Angebot gibt es leider nicht (mehr).',
+      toHome: 'Zur Startseite',
     },
     request: {
       title: 'Reise anfragen',
@@ -126,7 +141,6 @@ export const translations = {
     },
     theme: { light: 'Светлая тема', dark: 'Тёмная тема' },
     hero: {
-      badge: 'Более 2 500 довольных туристов',
       title: 'Небольшой бюджет. Большие приключения.',
       subtitle:
         'Пляж, города, горы или дальние страны: мы подберём путешествие мечты – с личной консультацией, честной ценой и поддержкой.',
@@ -135,13 +149,11 @@ export const translations = {
       when: 'Когда?',
       guests: 'Туристы',
       search: 'Найти туры',
-      stats: ['направлений', 'лет опыта', 'рейтинг'],
     },
     destinations: {
       eyebrow: 'Популярные направления',
       title: 'Куда отправимся?',
       text: 'Вдохновляйтесь – от классики Средиземноморья до экзотических стран.',
-      from: 'от',
       show: 'Смотреть туры',
     },
     how: {
@@ -186,6 +198,24 @@ export const translations = {
       showMore: 'Показать ещё',
       clearSearch: 'Сбросить поиск',
       board: { ai: 'Всё включено', hb: 'Полупансион', bb: 'Завтраки', ro: 'Без питания' },
+    },
+    detail: {
+      back: 'Все предложения',
+      about: 'О путешествии',
+      highlights: 'Главное',
+      included: 'Входит в стоимость',
+      flight: 'Перелёт туда и обратно из Германии',
+      transfer: 'Трансфер аэропорт – отель – аэропорт',
+      stay: (n) => `${n} ночей в выбранном отеле`,
+      security: 'Страховка на случай банкротства (Reisesicherungsschein)',
+      duration: 'Длительность',
+      board: 'Питание',
+      type: 'Тип отдыха',
+      priceNote: 'Цена с человека при двухместном размещении, с перелётом',
+      noObligation: 'Заявка ни к чему не обязывает – ответим в течение 24 часов',
+      similar: 'Похожие предложения',
+      notFound: 'Такого предложения, к сожалению, нет.',
+      toHome: 'На главную',
     },
     request: {
       title: 'Заявка на тур',
