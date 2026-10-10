@@ -53,12 +53,9 @@ export default function Footer() {
         <span>
           © {YEAR} Fernweh24. {f.rights}
         </span>
-        <span className={styles.credits}>
-          <span>{f.aiPhotos}</span>
-          <a href="https://unsplash.com" target="_blank" rel="noreferrer">
-            {f.photos}
-          </a>
-        </span>
+        <a href="https://unsplash.com" target="_blank" rel="noreferrer">
+          {f.photos}
+        </a>
       </div>
     </footer>
   )

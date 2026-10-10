@@ -33,7 +33,7 @@
 .dots {
   position: absolute;
   left: 50%;
-  bottom: 16px;
+  bottom: 22px;
   display: flex;
   gap: 0;
   transform: translateX(-50%);
@@ -77,6 +77,18 @@
   background:
     linear-gradient(180deg, #0f172a99 0%, #0f172a40 45%, #0f172acc 100%),
     linear-gradient(90deg, #0f172a80 0%, transparent 70%);
+}
+
+/* Small AI notice centered under the slide dots */
+.aiLabel {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  color: #ffffffb3;
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px #0009;
 }
 
 .content {

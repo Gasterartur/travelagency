@@ -73,6 +73,7 @@ export default function Hero({ onSearch }) {
   return (
     <section id="top" className={styles.hero}>
       <HeroSlides />
+      <span className={styles.aiLabel}>{t.hero.aiLabel}</span>
       <div className={styles.overlay} />
 
       <div className={`container ${styles.content}`}>
