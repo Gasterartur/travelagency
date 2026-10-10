@@ -137,7 +137,7 @@
   grid-column: auto;
 }
 
-.field:nth-child(2) {
+.date {
   grid-column: auto;
 }
 
@@ -177,6 +177,12 @@ select.input {
   padding-right: 32px;
 }
 
+.input:disabled {
+  background-color: var(--color-bg);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
 .input:focus {
   outline: none;
   border-color: var(--color-primary);
@@ -193,15 +199,15 @@ select.input {
   }
 
   .search {
-    grid-template-columns: 2fr 1.3fr 1fr auto;
-    max-width: 980px;
+    grid-template-columns: 1.3fr 1.3fr 1.1fr 0.7fr auto;
+    max-width: 1120px;
     align-items: end;
     padding: 20px;
     border-radius: var(--radius-xl);
   }
 
   .field,
-  .field:nth-child(2),
+  .date,
   .guests,
   .submit {
     grid-column: auto;

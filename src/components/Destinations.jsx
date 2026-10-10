@@ -15,7 +15,7 @@ export default function Destinations({ onSelect }) {
         <ul className={styles.grid}>
           {destinations.map((d, i) => (
             <li key={d.id} className={i === 0 ? styles.featured : undefined}>
-              <button type="button" className={styles.card} onClick={() => onSelect(d.query[lang])}>
+              <button type="button" className={styles.card} onClick={() => onSelect(d.country)}>
                 <img src={d.image} alt="" loading="lazy" decoding="async" className={styles.image} />
                 <span className={styles.shade} />
                 <span className={styles.body}>

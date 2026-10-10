@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../i18n/useLanguage.js'
 import Button from './Button.jsx'
-import { CalendarIcon, PinIcon, SearchIcon, UsersIcon } from './Icons.jsx'
+import { CalendarIcon, GlobeIcon, PinIcon, SearchIcon, UsersIcon } from './Icons.jsx'
+import { citiesOf, sortedCountries } from '../utils/countries.js'
 import styles from './Hero.module.css'
 
 const TODAY = new Date().toISOString().slice(0, 10)
@@ -60,14 +61,20 @@ function HeroSlides() {
 }
 
 export default function Hero({ onSearch }) {
-  const { t } = useLanguage()
-  const [where, setWhere] = useState('')
+  const { t, lang } = useLanguage()
+  const [country, setCountry] = useState('')
+  const [city, setCity] = useState('')
   const [when, setWhen] = useState('')
   const [guests, setGuests] = useState(2)
 
   const submit = (e) => {
     e.preventDefault()
-    onSearch({ query: where.trim(), date: when, guests })
+    onSearch({ country, city, date: when, guests })
+  }
+
+  const selectCountry = (code) => {
+    setCountry(code)
+    setCity('')
   }
 
   return (
@@ -81,20 +88,33 @@ export default function Hero({ onSearch }) {
         <p className={styles.subtitle}>{t.hero.subtitle}</p>
 
         <form className={styles.search} onSubmit={submit} role="search">
-          <label className={styles.field}>
+          <label className={`${styles.field} ${styles.country}`}>
             <span className={styles.label}>
-              <PinIcon size={16} /> {t.hero.where}
+              <GlobeIcon size={16} /> {t.hero.country}
             </span>
-            <input
-              className={styles.input}
-              type="search"
-              value={where}
-              onChange={(e) => setWhere(e.target.value)}
-              placeholder={t.hero.wherePlaceholder}
-              enterKeyHint="search"
-            />
+            <select className={styles.input} value={country} onChange={(e) => selectCountry(e.target.value)}>
+              <option value="">{t.hero.anyCountry}</option>
+              {sortedCountries(lang).map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
           </label>
-          <label className={styles.field}>
+          <label className={`${styles.field} ${styles.city}`}>
+            <span className={styles.label}>
+              <PinIcon size={16} /> {t.hero.city}
+            </span>
+            <select className={styles.input} value={city} onChange={(e) => setCity(e.target.value)} disabled={!country}>
+              <option value="">{country ? t.hero.anyCity : t.hero.chooseCountryFirst}</option>
+              {citiesOf(country).map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c[lang]}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className={`${styles.field} ${styles.date}`}>
             <span className={styles.label}>
               <CalendarIcon size={16} /> {t.hero.when}
             </span>

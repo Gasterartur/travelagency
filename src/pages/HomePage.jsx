@@ -7,15 +7,15 @@ import Newsletter from '../components/Newsletter.jsx'
 
 const scrollToOffers = () => document.getElementById('offers')?.scrollIntoView()
 
-export default function HomePage({ query, setQuery, setTripDefaults, favorites, onToggleFavorite, onRequest }) {
-  const handleSearch = ({ query, date, guests }) => {
-    setQuery(query)
+export default function HomePage({ search, setSearch, setTripDefaults, favorites, onToggleFavorite, onRequest }) {
+  const handleSearch = ({ country, city, date, guests }) => {
+    setSearch({ country, city })
     setTripDefaults({ date, guests })
     scrollToOffers()
   }
 
-  const handleDestination = (q) => {
-    setQuery(q)
+  const handleDestination = (country) => {
+    setSearch({ country, city: '' })
     scrollToOffers()
   }
 
@@ -26,8 +26,8 @@ export default function HomePage({ query, setQuery, setTripDefaults, favorites, 
       <HowItWorks />
       <WhyUs />
       <Offers
-        query={query}
-        onClearQuery={() => setQuery('')}
+        search={search}
+        onClearSearch={() => setSearch({ country: '', city: '' })}
         favorites={favorites}
         onToggleFavorite={onToggleFavorite}
         onRequest={onRequest}

@@ -21,7 +21,7 @@ function loadFavorites() {
 }
 
 export default function App() {
-  const [query, setQuery] = useState('')
+  const [search, setSearch] = useState({ country: '', city: '' })
   const [tripDefaults, setTripDefaults] = useState({ date: '', guests: 2 })
   const [favorites, setFavorites] = useState(loadFavorites)
   const [requested, setRequested] = useState(null)
@@ -47,7 +47,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<HomePage query={query} setQuery={setQuery} setTripDefaults={setTripDefaults} {...shared} />}
+            element={<HomePage search={search} setSearch={setSearch} setTripDefaults={setTripDefaults} {...shared} />}
           />
           <Route path="/angebot/:id" element={<OfferPage {...shared} />} />
           <Route path="*" element={<NotFound />} />

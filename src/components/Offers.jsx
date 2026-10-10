@@ -5,6 +5,7 @@ import SectionHeader from './SectionHeader.jsx'
 import OfferCard from './OfferCard.jsx'
 import Button from './Button.jsx'
 import { CloseIcon, HeartIcon, SearchIcon } from './Icons.jsx'
+import { countryName, findCity } from '../utils/countries.js'
 import styles from './Offers.module.css'
 
 const PAGE_SIZE = 8
@@ -21,28 +22,36 @@ const normalize = (s) =>
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
 
-// Match the query against every language so a German search also works on the RU page and vice versa.
-const matches = (offer, query) => {
-  if (!query) return true
-  const q = normalize(query)
-  return [...Object.values(offer.title), ...Object.values(offer.location)].some((text) => normalize(text).includes(q))
+// Country filters by ISO code. A city narrows further only if an offer title mentions it (in any
+// language); otherwise all offers of the country are kept and `cityMiss` lets the UI explain that.
+function applySearch(list, { country, city }) {
+  if (!country) return { list, cityMiss: false }
+  const inCountry = list.filter((o) => o.country === country)
+  const c = city && findCity(country, city)
+  if (!c) return { list: inCountry, cityMiss: false }
+  const names = [c.de, c.ru].map((n) => normalize(n.split(' (')[0]))
+  const inCity = inCountry.filter((o) =>
+    Object.values(o.title).some((title) => names.some((n) => normalize(title).includes(n))),
+  )
+  return inCity.length ? { list: inCity, cityMiss: false } : { list: inCountry, cityMiss: true }
 }
 
-export default function Offers({ query, onClearQuery, favorites, onToggleFavorite, onRequest }) {
-  const { t } = useLanguage()
+export default function Offers({ search, onClearSearch, favorites, onToggleFavorite, onRequest }) {
+  const { t, lang } = useLanguage()
   const [category, setCategory] = useState('all')
   const [sort, setSort] = useState('popular')
   const [visible, setVisible] = useState(PAGE_SIZE)
 
+  const searched = useMemo(() => applySearch(offers, search), [search])
+
   const filtered = useMemo(
     () =>
-      offers
+      searched.list
         .filter(
           (o) => category === 'all' || (category === 'favorites' ? favorites.includes(o.id) : o.category === category),
         )
-        .filter((o) => matches(o, query))
         .sort(SORTERS[sort]),
-    [category, sort, query, favorites],
+    [category, sort, searched, favorites],
   )
 
   const selectCategory = (c) => {
@@ -52,8 +61,13 @@ export default function Offers({ query, onClearQuery, favorites, onToggleFavorit
 
   const reset = () => {
     selectCategory('all')
-    onClearQuery()
+    onClearSearch()
   }
+
+  const city = search.country && search.city ? findCity(search.country, search.city) : null
+  const searchLabel = search.country
+    ? [countryName(search.country, lang), city?.[lang]].filter(Boolean).join(' · ')
+    : ''
 
   const chips = ['all', ...CATEGORIES]
 
@@ -105,16 +119,20 @@ export default function Offers({ query, onClearQuery, favorites, onToggleFavorit
           </div>
         </div>
 
-        {query && (
+        {searchLabel && (
           <div className={styles.activeSearch}>
             <SearchIcon size={14} />
             <span>
-              {t.offers.searchFor}: <strong>{query}</strong>
+              {t.offers.searchFor}: <strong>{searchLabel}</strong>
             </span>
-            <button type="button" onClick={onClearQuery} aria-label={t.offers.clearSearch} className={styles.clear}>
+            <button type="button" onClick={onClearSearch} aria-label={t.offers.clearSearch} className={styles.clear}>
               <CloseIcon size={14} />
             </button>
           </div>
+        )}
+
+        {searched.cityMiss && filtered.length > 0 && (
+          <p className={styles.hint}>{t.offers.cityFallback(city[lang], countryName(search.country, lang))}</p>
         )}
 
         {filtered.length > 0 ? (

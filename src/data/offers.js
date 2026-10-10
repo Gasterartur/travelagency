@@ -1,10 +1,11 @@
 // Demo data. Prices are per person incl. flight and accommodation.
-// `popularity` drives the default sort order.
+// `popularity` drives the default sort order, `country` is the ISO code used by the search.
 export const CATEGORIES = ['beach', 'city', 'mountains', 'exotic']
 
 export const offers = [
   {
     id: 'santorini',
+    country: 'GR',
     category: 'beach',
     image: '/images/santorini.jpg',
     title: { de: 'Santorini – Sonnenuntergang in Oia', ru: 'Санторини – закат в Ие' },
@@ -17,6 +18,7 @@ export const offers = [
   },
   {
     id: 'maldives',
+    country: 'MV',
     category: 'exotic',
     image: '/images/maldives.jpg',
     title: { de: 'Malediven – Wasservilla deluxe', ru: 'Мальдивы – вилла над водой' },
@@ -29,6 +31,7 @@ export const offers = [
   },
   {
     id: 'bali',
+    country: 'ID',
     category: 'exotic',
     image: '/images/bali.jpg',
     title: { de: 'Bali – Tempel & Reisterrassen', ru: 'Бали – храмы и рисовые террасы' },
@@ -40,6 +43,7 @@ export const offers = [
   },
   {
     id: 'paris',
+    country: 'FR',
     category: 'city',
     image: '/images/paris.jpg',
     title: { de: 'Paris – Romantik an der Seine', ru: 'Париж – романтика на Сене' },
@@ -51,6 +55,7 @@ export const offers = [
   },
   {
     id: 'thailand',
+    country: 'TH',
     category: 'beach',
     image: '/images/thailand.jpg',
     title: { de: 'Krabi – Inselhüpfen in der Andamanensee', ru: 'Краби – острова Андаманского моря' },
@@ -63,6 +68,7 @@ export const offers = [
   },
   {
     id: 'rome',
+    country: 'IT',
     category: 'city',
     image: '/images/rome.jpg',
     title: { de: 'Rom – Ewige Stadt kompakt', ru: 'Рим – Вечный город' },
@@ -74,6 +80,7 @@ export const offers = [
   },
   {
     id: 'alps',
+    country: 'CH',
     category: 'mountains',
     image: '/images/alps.jpg',
     title: { de: 'Lauterbrunnen – Tal der 72 Wasserfälle', ru: 'Лаутербруннен – долина 72 водопадов' },
@@ -85,6 +92,7 @@ export const offers = [
   },
   {
     id: 'tokyo',
+    country: 'JP',
     category: 'city',
     image: '/images/tokyo.jpg',
     title: { de: 'Tokio – Neonlichter & Tradition', ru: 'Токио – неон и традиции' },
@@ -96,6 +104,7 @@ export const offers = [
   },
   {
     id: 'dolomites',
+    country: 'IT',
     category: 'mountains',
     image: '/images/travel2.jpg',
     title: { de: 'Dolomiten – Pragser Wildsee', ru: 'Доломиты – озеро Брайес' },
@@ -108,6 +117,7 @@ export const offers = [
   },
   {
     id: 'dubai',
+    country: 'AE',
     category: 'exotic',
     image: '/images/dubai.jpg',
     title: { de: 'Dubai – Wüste trifft Skyline', ru: 'Дубай – пустыня и небоскрёбы' },
@@ -119,6 +129,7 @@ export const offers = [
   },
   {
     id: 'barcelona',
+    country: 'ES',
     category: 'city',
     image: '/images/barcelona.jpg',
     title: { de: 'Barcelona – Gaudí & Strand', ru: 'Барселона – Гауди и пляж' },
@@ -130,6 +141,7 @@ export const offers = [
   },
   {
     id: 'venice',
+    country: 'IT',
     category: 'city',
     image: '/images/venice.jpg',
     title: { de: 'Venedig – Gondeln & Palazzi', ru: 'Венеция – гондолы и палаццо' },
@@ -141,6 +153,7 @@ export const offers = [
   },
   {
     id: 'prague',
+    country: 'CZ',
     category: 'city',
     image: '/images/prague.jpg',
     title: { de: 'Prag – Goldene Stadt an der Moldau', ru: 'Прага – золотой город на Влтаве' },
@@ -152,6 +165,7 @@ export const offers = [
   },
   {
     id: 'norway',
+    country: 'NO',
     category: 'mountains',
     image: '/images/norway.jpg',
     title: { de: 'Geirangerfjord – Fjordkreuzfahrt', ru: 'Гейрангер-фьорд – круиз' },
@@ -163,6 +177,7 @@ export const offers = [
   },
   {
     id: 'iceland',
+    country: 'IS',
     category: 'mountains',
     image: '/images/iceland.jpg',
     title: { de: 'Island – Schluchten & Polarlichter', ru: 'Исландия – каньоны и северное сияние' },
@@ -174,6 +189,7 @@ export const offers = [
   },
   {
     id: 'newyork',
+    country: 'US',
     category: 'city',
     image: '/images/newyork.jpg',
     title: { de: 'New York – Big Apple erleben', ru: 'Нью-Йорк – Большое Яблоко' },
@@ -185,6 +201,7 @@ export const offers = [
   },
   {
     id: 'roadtrip',
+    country: 'US',
     category: 'exotic',
     image: '/images/travel1.jpg',
     title: { de: 'Roadtrip Südwesten – Nationalparks', ru: 'Роад-трип по нацпаркам США' },
@@ -196,42 +213,42 @@ export const offers = [
   },
 ]
 
-// Highlighted destinations for the "Reiseziele" section; `query` pre-fills the offer search.
+// Highlighted destinations for the "Reiseziele" section; `country` filters the offers.
 export const destinations = [
   {
     id: 'santorini',
     image: '/images/santorini.jpg',
     name: { de: 'Griechenland', ru: 'Греция' },
-    query: { de: 'Griechenland', ru: 'Греция' },
+    country: 'GR',
   },
   {
     id: 'bali',
     image: '/images/bali.jpg',
     name: { de: 'Indonesien', ru: 'Индонезия' },
-    query: { de: 'Indonesien', ru: 'Индонезия' },
+    country: 'ID',
   },
   {
     id: 'italy',
     image: '/images/venice.jpg',
     name: { de: 'Italien', ru: 'Италия' },
-    query: { de: 'Italien', ru: 'Италия' },
+    country: 'IT',
   },
   {
     id: 'maldives',
     image: '/images/maldives.jpg',
     name: { de: 'Malediven', ru: 'Мальдивы' },
-    query: { de: 'Malediven', ru: 'Мальдивы' },
+    country: 'MV',
   },
   {
     id: 'czechia',
     image: '/images/prague.jpg',
     name: { de: 'Tschechien', ru: 'Чехия' },
-    query: { de: 'Tschechien', ru: 'Чехия' },
+    country: 'CZ',
   },
   {
     id: 'norway',
     image: '/images/norway.jpg',
     name: { de: 'Norwegen', ru: 'Норвегия' },
-    query: { de: 'Norwegen', ru: 'Норвегия' },
+    country: 'NO',
   },
 ]
