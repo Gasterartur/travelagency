@@ -6,31 +6,59 @@ import styles from './Hero.module.css'
 
 const TODAY = new Date().toISOString().slice(0, 10)
 
-const SLIDES = ['sunset', 'lagoon', 'halong', 'lake', 'airport'].map((name) => `/images/hero/${name}.jpg`)
+const SLIDES = [
+  'sunset',
+  'lagoon',
+  'paris',
+  'halong',
+  'cinqueterre',
+  'lake',
+  'greece',
+  'rothenburg',
+  'resort',
+  'canyon',
+  'london',
+  'diving',
+  'manarola',
+  'alps',
+  'pyramids',
+  'backpacker',
+  'airport',
+].map((name) => `/images/hero/${name}.jpg`)
 const SLIDE_MS = 3000
 
 // Background slideshow: images are stacked and cross-faded via opacity.
+// Only slides up to one ahead of the furthest shown are rendered, so the
+// page doesn't download all photos at once.
 function HeroSlides() {
   const [active, setActive] = useState(0)
+  const [reached, setReached] = useState(1)
+
+  const go = (i) => {
+    setActive(i)
+    setReached((r) => Math.max(r, i + 1))
+  }
 
   useEffect(() => {
-    const timer = setInterval(() => setActive((i) => (i + 1) % SLIDES.length), SLIDE_MS)
-    return () => clearInterval(timer)
-  }, [active]) // restart the timer after a manual dot click
+    const timer = setTimeout(() => go((active + 1) % SLIDES.length), SLIDE_MS)
+    return () => clearTimeout(timer)
+  }, [active])
 
   return (
     <>
       <div className={styles.slides} aria-hidden="true">
-        {SLIDES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className={`${styles.slide} ${i === active ? styles.slideActive : ''}`}
-            fetchPriority={i === 0 ? 'high' : 'low'}
-            decoding="async"
-          />
-        ))}
+        {SLIDES.map((src, i) =>
+          i <= reached ? (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={`${styles.slide} ${i === active ? styles.slideActive : ''}`}
+              fetchPriority={i === 0 ? 'high' : 'low'}
+              decoding="async"
+            />
+          ) : null,
+        )}
       </div>
       <div className={styles.dots}>
         {SLIDES.map((src, i) => (
@@ -38,7 +66,7 @@ function HeroSlides() {
             key={src}
             type="button"
             className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
-            onClick={() => setActive(i)}
+            onClick={() => go(i)}
             aria-label={`${i + 1} / ${SLIDES.length}`}
             aria-current={i === active}
           />
