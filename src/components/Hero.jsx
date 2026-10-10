@@ -6,25 +6,8 @@ import styles from './Hero.module.css'
 
 const TODAY = new Date().toISOString().slice(0, 10)
 
-const SLIDES = [
-  'sunset',
-  'lagoon',
-  'paris',
-  'halong',
-  'cinqueterre',
-  'lake',
-  'greece',
-  'rothenburg',
-  'resort',
-  'canyon',
-  'london',
-  'diving',
-  'manarola',
-  'alps',
-  'pyramids',
-  'backpacker',
-  'airport',
-].map((name) => `/images/hero/${name}.jpg`)
+// AI-generated photos from src/assets/Foto/hero – Vite bundles them, order = file name
+const SLIDES = Object.values(import.meta.glob('../assets/Foto/hero/*.jpg', { eager: true, import: 'default' }))
 const SLIDE_MS = 3000
 
 // Background slideshow: images are stacked and cross-faded via opacity.
