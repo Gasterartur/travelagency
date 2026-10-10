@@ -81,11 +81,12 @@ export default function Hero({ onSearch }) {
     <section id="top" className={styles.hero}>
       <HeroSlides />
       <span className={styles.aiLabel}>{t.hero.aiLabel}</span>
-      <div className={styles.overlay} />
 
       <div className={`container ${styles.content}`}>
-        <h1 className={styles.title}>{t.hero.title}</h1>
-        <p className={styles.subtitle}>{t.hero.subtitle}</p>
+        <div className={styles.intro}>
+          <h1 className={styles.title}>{t.hero.title}</h1>
+          <p className={styles.subtitle}>{t.hero.subtitle}</p>
+        </div>
 
         <form className={styles.search} onSubmit={submit} role="search">
           <label className={`${styles.field} ${styles.country}`}>

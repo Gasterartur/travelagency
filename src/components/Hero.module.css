@@ -27,7 +27,7 @@
 }
 
 .slideActive {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .dots {
@@ -54,7 +54,8 @@
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: #ffffff80;
+  background: #ffffffb3;
+  box-shadow: 0 0 3px #000c;
   transition:
     width 0.3s,
     background-color 0.3s;
@@ -70,14 +71,6 @@
   border-radius: 999px;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(180deg, #0f172a99 0%, #0f172a40 45%, #0f172acc 100%),
-    linear-gradient(90deg, #0f172a80 0%, transparent 70%);
-}
 
 /* Small AI notice centered under the slide dots */
 .aiLabel {
@@ -85,16 +78,30 @@
   left: 50%;
   bottom: 6px;
   transform: translateX(-50%);
-  color: #ffffffb3;
+  color: #fff;
   font-size: 0.6875rem;
   white-space: nowrap;
-  text-shadow: 0 1px 2px #0009;
+  text-shadow: 0 0 2px #000, 0 0 6px #000;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* Frosted dark panel behind the white text: blurs and darkens only this area of the photo */
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: flex-start;
+  max-width: 640px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: #0f172a8c;
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
 }
 
 .title {
@@ -194,6 +201,11 @@ select.input {
 }
 
 @media (min-width: 768px) {
+  .intro {
+    padding: 28px 32px;
+    border-radius: var(--radius-xl);
+  }
+
   .hero {
     padding-block: 56px 64px;
   }
