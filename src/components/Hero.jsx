@@ -1,10 +1,52 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLanguage } from '../i18n/useLanguage.js'
 import Button from './Button.jsx'
 import { CalendarIcon, PinIcon, SearchIcon, UsersIcon } from './Icons.jsx'
 import styles from './Hero.module.css'
 
 const TODAY = new Date().toISOString().slice(0, 10)
+
+const SLIDES = ['sunset', 'lagoon', 'halong', 'lake', 'airport'].map((name) => `/images/hero/${name}.jpg`)
+const SLIDE_MS = 3000
+
+// Background slideshow: images are stacked and cross-faded via opacity.
+function HeroSlides() {
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => setActive((i) => (i + 1) % SLIDES.length), SLIDE_MS)
+    return () => clearInterval(timer)
+  }, [active]) // restart the timer after a manual dot click
+
+  return (
+    <>
+      <div className={styles.slides} aria-hidden="true">
+        {SLIDES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className={`${styles.slide} ${i === active ? styles.slideActive : ''}`}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+            decoding="async"
+          />
+        ))}
+      </div>
+      <div className={styles.dots}>
+        {SLIDES.map((src, i) => (
+          <button
+            key={src}
+            type="button"
+            className={`${styles.dot} ${i === active ? styles.dotActive : ''}`}
+            onClick={() => setActive(i)}
+            aria-label={`${i + 1} / ${SLIDES.length}`}
+            aria-current={i === active}
+          />
+        ))}
+      </div>
+    </>
+  )
+}
 
 export default function Hero({ onSearch }) {
   const { t } = useLanguage()
@@ -19,7 +61,7 @@ export default function Hero({ onSearch }) {
 
   return (
     <section id="top" className={styles.hero}>
-      <img className={styles.bg} src="/images/beach.jpg" alt="" fetchPriority="high" decoding="async" />
+      <HeroSlides />
       <div className={styles.overlay} />
 
       <div className={`container ${styles.content}`}>
