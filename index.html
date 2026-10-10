@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Fernweh24 – Reisebüro für Ihre Traumreise</title>
+    <meta
+      name="description"
+      content="Fernweh24 – Ihr Reisebüro: Strand, Städte, Berge und Fernreisen. Persönlich beraten, fair gebucht."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0d9488" />
+    <meta property="og:title" content="Fernweh24 – Reisebüro für Ihre Traumreise" />
+    <meta property="og:description" content="Handverlesene Reiseangebote weltweit – persönlich beraten." />
+    <meta property="og:image" content="/images/beach.jpg" />
+    <script>
+      // Apply the theme before the first paint (no light flash): saved choice, else system setting
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('fw24.theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

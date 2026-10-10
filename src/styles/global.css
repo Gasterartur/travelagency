@@ -1,0 +1,132 @@
+:root {
+  --color-bg: #f5f6f8;
+  --color-surface: #fff;
+  --color-text: #111827;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-soft: #ccfbf1;
+  --color-primary-ring: #0d948840;
+  --color-accent: #f97316;
+  --color-danger: #dc2626;
+  --color-star: #f59e0b;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 2px #1018280f;
+  --shadow-md: 0 8px 20px #10182814;
+  --shadow-lg: 0 24px 48px #10182838;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --container: 1200px;
+  --gutter: 16px;
+  --header-h: 64px;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #0b0f14;
+  --color-surface: #141a21;
+  --color-text: #e5e7eb;
+  --color-muted: #9ca3af;
+  --color-border: #232b35;
+  --color-border-strong: #334155;
+  --color-primary: #14b8a6;
+  --color-primary-hover: #2dd4bf;
+  --color-primary-soft: #14b8a626;
+  --color-primary-ring: #14b8a64d;
+  --color-accent: #fb923c;
+  --color-danger: #f87171;
+  --color-star: #fbbf24;
+  --shadow-md: 0 8px 20px #00000059;
+  --shadow-lg: 0 24px 48px #00000080;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 24px;
+    --header-h: 72px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
